@@ -1,19 +1,26 @@
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
+import React, { useCallback } from "react";
 
 function App() {
-  const baseUrl = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=5000";
-  axios.get(baseUrl).then((res) => {
-    let firstArray = res.data.bids.map(function(name) {
-      return name[1]
-    })
-    firstArray.forEach(element => {
-      if (element > 50) {
-        console.log(element)
-      }
+  const baseURL = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=500";
+  const [qty, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((res) => {
+      setPost(
+        res.data.bids.map(function (name) {
+          if (name[1] > 1) {
+            return name[1] + " ";
+          }
+        })
+      );
     });
-  });
+  }, []);
+
+  if (!qty) return null;
+
   return (
     <div className="App">
       <header className="App-header">
@@ -24,6 +31,7 @@ function App() {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
+        <p>{qty}</p>
       </header>
     </div>
   );
