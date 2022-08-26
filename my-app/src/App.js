@@ -12,7 +12,7 @@ function App() {
       setPost(
         res.data.bids.map(function (name) {
           if (name[1] > 1) {
-            return <div>{name[1]}</div> 
+            return <div className="qty_1">{name[1]}</div>
           }
         })
       );
@@ -24,14 +24,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>srccccc/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-        <p>{qty}</p>
+        QTY:
+        <div className="qty">{qty}</div>
       </header>
     </div>
   );

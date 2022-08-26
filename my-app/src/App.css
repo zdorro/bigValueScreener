@@ -14,6 +14,7 @@
 }
 
 .App-header {
+  padding-top: 40px;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,4 +36,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.qty {
+  padding: 20px;
+}
+
+.qty_1 {
+  background-color: #3e8fa0;
+  margin: 15px;
+  padding: 5px;
+  cursor: pointer;
+  border: solid 2px;
+}
+
+.qty_1:hover {
+  transform: scale(1.1);
 }
