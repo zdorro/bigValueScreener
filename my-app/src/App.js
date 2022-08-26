@@ -12,7 +12,7 @@ function App() {
       setPost(
         res.data.bids.map(function (name) {
           if (name[1] > 1) {
-            return name[1] + '\n'; 
+            return <div>{name[1]}</div> 
           }
         })
       );
