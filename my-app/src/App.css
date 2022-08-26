@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #49505d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.valueArr {
+  font-size: 20px;
+}
+.valueElem {
+  margin: 3px;
+  color: #000000;
+  padding: 5px 10px;
+  background-color: rgb(49, 73, 73);
+}
+
+.valueTrue {
+  background-color: rgb(39, 212, 39);
+  font-weight: 700;
+  color:#000000;
+  margin: 3px;
+  padding: 5px 10px;
 }
