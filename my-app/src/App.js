@@ -20,11 +20,15 @@ function App() {
     }, []);
 
      const newValue = value.map(elem => {     
-      return elem; 
+      return elem;
           });
 
     const newValue2 = newValue.filter(val => {
-              if (val[1] > 1) {
+              if (val[1] > 1 && val[0] > 1) {
+                const newVal = Number(val[1]);
+                const newValTwo = Number(val[0]);
+                  val[1] = newVal.toString();
+                  val[0] = newValTwo.toString();
                 return val;
               }
             })
@@ -36,9 +40,7 @@ function App() {
           <div className="valueArr">
             {newValue2.map(el => {
               return (
-                //<div className='valueElem'>
-                    <div className={(el[1] > 2) ? 'valueTrue' : 'valueElem'}>Цена: {el[0]}; Наполненность: {el[1]}</div>
-                //</div>
+                <div className={(el[1] >= 2) ? 'valueTrue' : 'valueElem'}>Цена: {el[0]}; Наполненность: {el[1]}</div>
               )
             })}
           </div>
