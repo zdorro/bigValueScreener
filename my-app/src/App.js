@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import logo from "./logo.svg";
 import "./App.css";
+import classNames from "classnames";
 
 function App() {
   const baseURL = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=500";
@@ -15,19 +16,21 @@ function App() {
 
       const newSignals = bids
       .map(([price, qty]) => ({ price, qty }))
-      .filter(({ qty }) => qty > 1);
+      .filter(({ qty }) => qty > 0.1);
 
       setSignals(newSignals);
 
     });
   }, []);
 
+  
+
   return (
     <div className="App">
       <header className="App-header">
         QTY:
         <div className="qty">
-          {signals.map(({price, qty})=> <div className="qty_1">{price}: {qty}</div>)}
+          {signals.map(({price, qty})=> <div className={classNames({'qty_1': qty <= 1}, {'qty_2': qty > 1})}>{price}: {qty}</div>)}
         </div>
       </header>
     </div>
