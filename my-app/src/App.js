@@ -11,27 +11,24 @@ function App() {
 
   useEffect(() => {
     axios.get(baseURL).then((res) => {
-
       const { bids } = res.data;
 
-      const newSignals = bids
-      .map(([price, qty]) => ({ price, qty }))
-      .filter(({ qty }) => qty > 0.1);
+      const newSignals = bids.map(([price, qty]) => ({ price, qty })).filter(({ qty }) => qty > 0.1);
 
       setSignals(newSignals);
-
     });
   }, []);
 
-   return (
+  return (
     <div className="App">
       <header className="App-header">
         QTY:
         <div className="qty">
-          {signals.map(({price, qty})=> 
-          <div className={classNames({'qty_1': qty <= 1}, {'qty_2': qty > 1})}>
-            Цена: {price}  Количество: {(+qty).toFixed(5)}
-          </div>)}
+          {signals.map(({ price, qty }) => (
+            <div className={classNames({ qty_1: qty <= 1 }, { qty_2: qty > 1 })}>
+              Цена: {price} Количество: {(+qty).toFixed(5)}
+            </div>
+          ))}
         </div>
       </header>
     </div>
