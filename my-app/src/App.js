@@ -23,14 +23,15 @@ function App() {
     });
   }, []);
 
-  
-
-  return (
+   return (
     <div className="App">
       <header className="App-header">
         QTY:
         <div className="qty">
-          {signals.map(({price, qty})=> <div className={classNames({'qty_1': qty <= 1}, {'qty_2': qty > 1})}>{price}: {qty}</div>)}
+          {signals.map(({price, qty})=> 
+          <div className={classNames({'qty_1': qty <= 1}, {'qty_2': qty > 1})}>
+            Цена: {price}  Количество: {(+qty).toFixed(5)}
+          </div>)}
         </div>
       </header>
     </div>
