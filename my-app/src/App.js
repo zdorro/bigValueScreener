@@ -13,8 +13,12 @@ function App() {
     axios.get(baseURL).then((res) => {
       const { bids } = res.data;
 
-      const newSignals = bids.map(([price, qty]) => ({ price: price.replace(/(\.[0-9]*[1-9])0+$|\.0*$/, "$1"), 
-      qty: qty.replace(/(\.[0-9]*[1-9])0+$|\.0*$/, "$1") })).filter(({ qty }) => qty > 0.1);
+      const newSignals = bids
+        .map(([price, qty]) => ({
+          price: price.replace(/(\.[0-9]*[1-9])0+$|\.0*$/, "$1"),
+          qty: qty.replace(/(\.[0-9]*[1-9])0+$|\.0*$/, "$1"),
+        }))
+        .filter(({ qty }) => qty > 0.1);
 
       setSignals(newSignals);
     });
