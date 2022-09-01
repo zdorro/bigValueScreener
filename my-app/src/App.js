@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import classNames from "classnames";
+import Qty from "./components/Qty";
 
 function App() {
   const baseURL = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=500";
@@ -30,9 +31,7 @@ function App() {
         QTY:
         <div className="qty">
           {signals.map(({ price, qty }) => (
-            <div className={classNames({ qty_1: qty <= 1 }, { qty_2: qty > 1 })}>
-              Цена: {price} Количество: {qty}
-            </div>
+            <Qty qty={qty} price={price} />
           ))}
         </div>
       </header>
